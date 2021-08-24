@@ -35,7 +35,7 @@ abstract class IppMessage {
         get() = getSingleAttributesGroup(IppTag.Job)
 
     fun getAttributesGroups(tag: IppTag) =
-            attributesGroups.filter { it.tag == tag }
+            attributesGroups.filter { it.groupTag == tag }
 
     fun getSingleAttributesGroup(tag: IppTag) = with(getAttributesGroups(tag)) {
         if (isEmpty()) throw IppException("no group found with tag '$tag' in $attributesGroups")
@@ -43,7 +43,7 @@ abstract class IppMessage {
     }
 
     fun containsGroup(tag: IppTag) =
-            attributesGroups.map { it.tag }.contains(tag)
+            attributesGroups.map { it.groupTag }.contains(tag)
 
     // factory method for IppAttributesGroup
     fun createAttributesGroup(tag: IppTag) =
@@ -128,7 +128,7 @@ abstract class IppMessage {
 
     override fun toString() = "%s %s%s".format(
             codeDescription,
-            attributesGroups.map { "${it.values.size} ${it.tag}" },
+            attributesGroups.map { "${it.values.size} ${it.groupTag}" },
             if (rawBytes == null) "" else " (${rawBytes!!.size} bytes)"
     )
 

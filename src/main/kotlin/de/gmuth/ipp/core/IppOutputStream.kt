@@ -33,7 +33,7 @@ class IppOutputStream(outputStream: OutputStream) : DataOutputStream(outputStrea
         log.debug { "requestId = $requestId" }
 
         for (group in attributesGroups) {
-            writeTag(group.tag)
+            writeTag(group.groupTag)
             for (attribute in group.values) {
                 try {
                     writeAttribute(attribute)
