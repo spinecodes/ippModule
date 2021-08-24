@@ -35,6 +35,12 @@ dependencies {
     //"slf4jSupportImplementation"("org.slf4j:slf4j-api:1.7.30") // pom.xml: scope=compile, optional=true
     compileOnly("org.slf4j:slf4j-api:1.7.30")
     testRuntimeOnly("org.slf4j:slf4j-simple:1.7.30")
+
+    // https://googleapis.github.io/google-http-java-client
+    implementation("com.google.http-client:google-http-client:1.39.2") // NetHttpTransport
+    implementation("com.google.http-client:google-http-client-apache-v2:1.39.2") // ApacheHttpTransport
+    //implementation("com.google.http-client:google-http-client-appengine:1.39.2") // UrlFetchTransport()
+    //implementation("com.google.appengine:appengine-api-1.0-sdk:1.9.91") // AppEngine 1.0 for UrlFetchTransport
 }
 
 // gradlew clean -x test build publishToMavenLocal
